@@ -1,0 +1,7 @@
+{
+    "name": "InstaWallpaper",
+    "description": "Set wallpaper to Android phone from Instagram",
+    "repository": "https://github.com/yurist38/instawall",
+    "logo": "http://instawallpaper.herokuapp.com/img/InstaWall.png",
+    "keywords": ["ionic", "instagram", "wallpaper"]
+}

@@ -30,14 +30,16 @@
       <ion-content ng-controller="MainCtrl">
         <div class="list">
 
-          <div class="item item-input-inset">
-            <label class="item-input-wrapper">
-              <input type="text" ng-model="tagname" placeholder="Your hash tags">
-            </label>
-            <button class="button button-small button-balanced" ng-click="findPics()">
-              Find
-            </button>
-          </div>
+          <form ng-submit="findPics()">
+            <div class="item item-input-inset">
+              <label class="item-input-wrapper">
+                <input type="search" ng-model="tagname" placeholder="Your hash tag">
+              </label>
+              <button type="submit" class="button button-small button-balanced">
+                Find images
+              </button>
+            </div>
+          </form>
 
         </div>
 
@@ -74,6 +76,8 @@
           </div>
 
         </div>
+
+        <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()" distance="1%" ng-if="feedActive"></ion-infinite-scroll>
 
       </ion-content>
     </ion-pane>

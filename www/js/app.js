@@ -24,16 +24,17 @@ angular.module('InstaWall', ['ionic'])
   var fullUrl = mainUrl;
 
   $scope.findPics = function(){
-    mainUrl += $scope.tagname+"/media/recent?access_token="+accessToken;
+    mainUrl += $scope.tagname+"/media/recent?access_token="+accessToken+'&callback=JSON_CALLBACK&count=10';
     $log.log(mainUrl);
 
-    var responsePromise = $http.get(mainUrl);
+    var instaResponse = $http.jsonp(mainUrl);
 
-    responsePromise.success(function(data, status, headers, config) {
-        $scope.myData.fromServer = data.title;
+    instaResponse.then(function(response) {
+        $scope.instaData = response.data.data;
+        //$log.log($scope.instaData);
     });
-    responsePromise.error(function(data, status, headers, config) {
-        alert("AJAX failed!");
+    instaResponse.error(function(data, status, headers, config) {
+        alert("Sorry! Can not connect with server... Try later.");
     });
 
   }
